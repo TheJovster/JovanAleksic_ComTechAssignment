@@ -16,7 +16,6 @@ public partial class PlayerShootingSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        // Handle input on the main thread
         bool isShooting = Input.GetButton("Fire");
         if (isShooting) 
         {
@@ -25,12 +24,10 @@ public partial class PlayerShootingSystem : SystemBase
         float deltaTime = SystemAPI.Time.DeltaTime;
         var commandBuffer = commandBufferSystem.CreateCommandBuffer();
 
-        // Iterate over player entities manually
         Entities
             .WithStoreEntityQueryInField(ref playerQuery)
             .ForEach((Entity entity, ref Player player, ref LocalTransform transform, ref PlayerPrefab playerPrefab, ref PlayerShootInput inputState) =>
             {
-                // Update shoot input state
                 inputState.IsShooting = isShooting;
 
                 player.CurrentCooldown -= deltaTime;
