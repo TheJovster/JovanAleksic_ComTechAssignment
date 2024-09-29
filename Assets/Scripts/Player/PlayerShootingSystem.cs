@@ -2,7 +2,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-
 public partial class PlayerShootingSystem : SystemBase
 {
     private BeginInitializationEntityCommandBufferSystem commandBufferSystem;
